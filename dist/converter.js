@@ -13,6 +13,30 @@ const miniWidgetValue = document.getElementById('mini-widget-value');
 const miniWidgetDetail = document.getElementById('mini-widget-detail');
 const miniWidgetClose = document.getElementById('mini-widget-close');
 const widgetToggleBtn = document.getElementById('ctl-widget');
+const installAppBtn = document.getElementById('install-app');
+
+let installPrompt;
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  installPrompt = event;
+  installAppBtn.hidden = false;
+});
+
+installAppBtn.addEventListener('click', async () => {
+  if (!installPrompt) return;
+  installPrompt.prompt();
+  const choice = await installPrompt.userChoice;
+  if (choice.outcome === 'accepted') {
+    showToast('Aplicación instalada');
+  }
+  installPrompt = null;
+  installAppBtn.hidden = true;
+});
+
+window.addEventListener('appinstalled', () => {
+  installPrompt = null;
+  installAppBtn.hidden = true;
+});
 
 const unitSymbols = { c: '°C', f: '°F', k: 'K' };
 

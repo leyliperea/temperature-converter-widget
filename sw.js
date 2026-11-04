@@ -1,4 +1,4 @@
-const CACHE_NAME = `temperature-converter-v11`;
+const CACHE_NAME = `temperature-converter-v12`;
 const WIDGET_TAG = 'temperature-converter-widget';
 const WIDGET_TEMPLATE_URL = './widgets/temperature-template.json';
 const WIDGET_DATA_URL = './widgets/temperature-data.json';
@@ -11,6 +11,9 @@ self.addEventListener('install', event => {
       './',
       './converter.js',
       './converter.css',
+      './icon192.png',
+      './icon512.png',
+      './manifest.json',
       './widgets/temperature-template.json',
       './widgets/temperature-data.json',
       './widgets/widget-preview.svg'

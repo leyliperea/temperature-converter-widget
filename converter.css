@@ -163,6 +163,30 @@ body {
   outline-offset: 2px;
 }
 
+.install-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid #2f3d58;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: #2f3d58;
+  font: 600 0.72rem/1 inherit;
+  cursor: pointer;
+}
+
+.install-action[hidden] {
+  display: none;
+}
+
+.install-action:hover {
+  background: #edf2fa;
+}
+
 /* --- Window Controls Overlay --- */
 #title-bar {
   position: fixed;
@@ -412,6 +436,11 @@ html.dark-theme #converter {
 html.dark-theme .primary-action {
   background: #75a7ff;
   color: #172033;
+}
+
+html.dark-theme .install-action {
+  border-color: #75a7ff;
+  color: #fff;
 }
 
 html.dark-theme #info-panel,
