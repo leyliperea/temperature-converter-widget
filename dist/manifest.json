@@ -1,0 +1,52 @@
+{
+  "lang": "en-us",
+  "name": "Temperature converter",
+  "short_name": "Temperature converter",
+  "id": "./",
+  "description": "A basic temperature converter application that can convert to and from Celsius, Kelvin, and Fahrenheit",
+  "start_url": "./",
+  "scope": "./",
+  "background_color": "#2f3d58",
+  "theme_color": "#2f3d58",
+  "orientation": "any",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "icons": [
+      {
+          "src": "./icon512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      }
+  ],
+  "widgets": [
+    {
+      "name": "Conversor de temperatura",
+      "short_name": "Temperatura",
+      "description": "Consulta de un vistazo la última conversión de temperatura.",
+      "tag": "temperature-converter-widget",
+      "template": "temperature-converter-card",
+      "ms_ac_template": "./widgets/temperature-template.json",
+      "data": "./widgets/temperature-data.json",
+      "type": "application/json",
+      "auth": false,
+      "multiple": false,
+      "update": 3600,
+      "icons": [
+        {
+          "src": "./icon512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "./widgets/widget-preview.svg",
+          "sizes": "300x304",
+          "type": "image/svg+xml",
+          "platform": "Windows",
+          "label": "Vista previa del conversor de temperatura"
+        }
+      ]
+    }
+  ]
+}
