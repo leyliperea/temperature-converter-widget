@@ -1,0 +1,61 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "verticalContentAlignment": "Center",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "🌡️",
+              "size": "ExtraLarge",
+              "horizontalAlignment": "Center"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Temperatura",
+              "size": "Small",
+              "isSubtle": true,
+              "wrap": true
+            },
+            {
+              "type": "TextBlock",
+              "text": "${output}",
+              "size": "ExtraLarge",
+              "weight": "Bolder",
+              "spacing": "None",
+              "wrap": true
+            },
+            {
+              "type": "TextBlock",
+              "text": "${input} · ${status}",
+              "size": "Small",
+              "isSubtle": true,
+              "spacing": "Small",
+              "wrap": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Execute",
+      "title": "Abrir conversor",
+      "verb": "open-converter"
+    }
+  ]
+}

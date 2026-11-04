@@ -1,0 +1,450 @@
+html {
+  background: rgb(243, 243, 243);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15pt;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  color: #172033;
+}
+
+#app-shell {
+  display: grid;
+  grid-template-columns: minmax(14rem, 18rem) minmax(15rem, 19rem);
+  gap: 1rem;
+  align-items: stretch;
+  padding: 4rem 1rem 1rem;
+}
+
+#converter,
+#thermometer-widget {
+  width: 15rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem 0 #0001;
+  background: #fff;
+}
+
+#converter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#thermometer-widget {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  background: linear-gradient(145deg, #2f3d58, #172033);
+  color: #fff;
+}
+
+.widget-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.widget-kicker {
+  color: #9fb8e7;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#widget-title {
+  margin: 0.2rem 0 1.2rem;
+  font-size: 1rem;
+}
+
+#widget-value {
+  font-size: 2.3rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+#widget-feeling {
+  margin-top: 0.5rem;
+  color: #d8e1f2;
+  font-size: 0.65rem;
+}
+
+.thermometer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.75rem 0.35rem;
+}
+
+.thermometer-track {
+  position: relative;
+  width: 1rem;
+  height: 7rem;
+  overflow: hidden;
+  border: 0.18rem solid #fff;
+  border-bottom: 0;
+  border-radius: 0.7rem 0.7rem 0 0;
+  background: #ffffff25;
+}
+
+#thermometer-level {
+  position: absolute;
+  right: 0.18rem;
+  bottom: 0;
+  left: 0.18rem;
+  height: 53%;
+  border-radius: 0.4rem 0.4rem 0 0;
+  background: #ff9f43;
+  transition: height 0.35s ease, background 0.35s ease;
+}
+
+#thermometer-bulb {
+  width: 2rem;
+  height: 2rem;
+  margin-top: -0.35rem;
+  border: 0.18rem solid #fff;
+  border-radius: 50%;
+  background: #ff9f43;
+  box-shadow: inset 0 0 0 0.28rem #ffffff25;
+  transition: background 0.35s ease;
+}
+
+#converter input, #converter select {
+  font-family: inherit;
+  font-size: inherit;
+  margin-block-end: 1rem;
+  text-align: center;
+  width: 10rem;
+}
+
+#converter #output-temp {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: #2f3d58;
+  color: #fff;
+  font: 600 0.75rem/1 inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.primary-action:hover {
+  background: #3d5073;
+  transform: translateY(-1px);
+}
+
+.primary-action:active {
+  transform: translateY(0);
+}
+
+.primary-action:focus-visible {
+  outline: 3px solid #75a7ff;
+  outline-offset: 2px;
+}
+
+/* --- Window Controls Overlay --- */
+#title-bar {
+  position: fixed;
+  left: env(titlebar-area-x, 0);
+  top: env(titlebar-area-y, 0);
+  height: env(titlebar-area-height, 33px);
+  width: env(titlebar-area-width, 100%);
+  app-region: drag;
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline-start: 0.75rem;
+  box-sizing: border-box;
+  background: #2f3d58;
+  color: #fff;
+  font-size: 0.7rem;
+  user-select: none;
+  z-index: 1000;
+}
+
+#title-bar-icon {
+  border-radius: 2px;
+}
+
+#title-bar-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-inline-end: 0.5rem;
+}
+
+.tb-btn {
+  app-region: no-drag;
+  -webkit-app-region: no-drag;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.7rem;
+  width: 1.6rem;
+  height: 1.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.tb-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#ctl-status.wco-on {
+  color: #4caf50;
+}
+
+#ctl-status.wco-off {
+  color: #f0b429;
+}
+
+#ctl-geometry-badge {
+  margin-left: 0.75rem;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+#more-menu {
+  position: fixed;
+  top: env(titlebar-area-height, 33px);
+  right: 0.25rem;
+  background: #fff;
+  color: #222;
+  border-radius: 0.4rem;
+  box-shadow: 0 4px 16px #0004;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 11rem;
+  z-index: 1001;
+}
+
+#more-menu[hidden],
+#info-panel[hidden],
+#toast[hidden] {
+  display: none;
+}
+
+#more-menu button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.7rem;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+#more-menu button:hover {
+  background: #eee;
+}
+
+#more-menu hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 0.2rem 0;
+}
+
+#info-panel {
+  position: fixed;
+  top: calc(env(titlebar-area-height, 33px) + 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 32px #0005;
+  padding: 1.25rem 1.5rem;
+  z-index: 1002;
+  font-size: 0.75rem;
+  max-width: 20rem;
+}
+
+#info-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+#info-panel ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+#info-close {
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: 0.3rem;
+  background: #2f3d58;
+  color: #fff;
+  cursor: pointer;
+}
+
+#toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 4px 16px #0004;
+  z-index: 1003;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+#toast.show {
+  opacity: 1;
+}
+
+/* Mini widget flotante: resumen compacto e independiente de la app principal. */
+#mini-widget {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 12rem;
+  min-height: 3.5rem;
+  padding: 0.8rem 2rem 0.8rem 0.9rem;
+  border: 1px solid #ffffff25;
+  border-radius: 0.85rem;
+  background: linear-gradient(145deg, #2f3d58, #172033);
+  box-shadow: 0 0.7rem 2rem #0004;
+  color: #fff;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+#mini-widget[hidden] {
+  display: none;
+}
+
+.mini-widget-icon {
+  display: grid;
+  flex: 0 0 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 0.65rem;
+  background: #ffffff18;
+  font-size: 1.3rem;
+}
+
+.mini-widget-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.mini-widget-content span,
+.mini-widget-content small {
+  overflow: hidden;
+  color: #cbd6e9;
+  font-size: 0.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#mini-widget-value {
+  margin: 0.08rem 0;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+#mini-widget-close {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.35rem;
+  border: 0;
+  background: transparent;
+  color: #cbd6e9;
+  font: 1rem/1 inherit;
+  cursor: pointer;
+}
+
+#mini-widget-close:hover {
+  color: #fff;
+}
+
+html.dark-theme {
+  background: #1c2536;
+}
+
+html.dark-theme #converter {
+  background: #2f3d58;
+  color: #eee;
+}
+
+html.dark-theme .primary-action {
+  background: #75a7ff;
+  color: #172033;
+}
+
+html.dark-theme #info-panel,
+html.dark-theme #more-menu {
+  background: #253045;
+  color: #eee;
+}
+
+html.dark-theme #more-menu button:hover {
+  background: #2f3d58;
+}
+
+body.wco-visible {
+  padding-top: env(titlebar-area-height, 33px);
+  box-sizing: border-box;
+}
+
+@media (max-width: 720px) {
+  body {
+    place-items: start center;
+  }
+
+  #app-shell {
+    grid-template-columns: minmax(0, 19rem);
+  }
+
+  #converter,
+  #thermometer-widget {
+    width: auto;
+  }
+
+  #mini-widget {
+    right: 0.6rem;
+    bottom: 0.6rem;
+  }
+}

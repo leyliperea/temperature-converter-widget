@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/png" href="./icon512.png">
+    <link rel="stylesheet" href="./converter.css">
+    <link rel="manifest" href="./manifest.json">
+    <title>Temperature converter</title>
+    <meta name="application-name" content="Temperature converter">
+  </head>
+  <body>
+    <div id="title-bar">
+      <img id="title-bar-icon" src="./icon512.png" alt="" width="16" height="16" />
+      <span id="title-bar-text">Temperature converter</span>
+      <span id="ctl-geometry-badge" title="Geometría del área de la barra de título">0×0</span>
+      <div id="title-bar-controls">
+        <button id="ctl-status" class="tb-btn" title="Estado de la superposición">●</button>
+        <button id="ctl-theme" class="tb-btn" title="Cambiar tema">◐</button>
+        <button id="ctl-swap" class="tb-btn" title="Intercambiar unidades">⇄</button>
+        <button id="ctl-widget" class="tb-btn" title="Mostrar u ocultar mini widget" aria-label="Mostrar u ocultar mini widget" aria-pressed="true">▣</button>
+        <button id="ctl-fullscreen" class="tb-btn" title="Pantalla completa">⛶</button>
+        <button id="ctl-copy" class="tb-btn" title="Copiar resultado">📋</button>
+        <button id="ctl-more" class="tb-btn" title="Configuración y más">⋯</button>
+        <div id="more-menu" hidden>
+          <button id="mi-theme">Cambiar tema</button>
+          <button id="mi-swap">Intercambiar unidades</button>
+          <hr />
+          <button id="mi-info">Acerca de</button>
+        </div>
+      </div>
+    </div>
+    <div id="info-panel" hidden>
+      <h2>Acerca de</h2>
+      <p>Temperature converter PWA</p>
+      <ul>
+        <li>display_override: window-controls-overlay</li>
+        <li>Variables env(titlebar-area-*)</li>
+        <li>app-region: drag / no-drag</li>
+        <li>Evento geometrychange con debounce</li>
+        <li>navigator.windowControlsOverlay</li>
+      </ul>
+      <button id="info-close">Cerrar</button>
+    </div>
+    <div id="toast" hidden></div>
+    <main id="app-shell">
+      <section id="thermometer-widget" aria-labelledby="widget-title">
+        <div class="widget-copy">
+          <span class="widget-kicker">En tiempo real</span>
+          <h2 id="widget-title">Termómetro</h2>
+          <strong id="widget-value">68 °F</strong>
+          <span id="widget-feeling">Temperatura templada</span>
+        </div>
+        <div class="thermometer" aria-hidden="true">
+          <div class="thermometer-track">
+            <div id="thermometer-level"></div>
+          </div>
+          <div id="thermometer-bulb"></div>
+        </div>
+      </section>
+
+      <form id="converter">
+        <label for="input-temp">Temperatura</label>
+        <input type="number" step="any" id="input-temp" name="input-temp" value="20" inputmode="decimal" />
+        <label for="input-unit">De</label>
+        <select id="input-unit" name="input-unit">
+          <option value="c" selected>Celsius</option>
+          <option value="f">Fahrenheit</option>
+          <option value="k">Kelvin</option>
+        </select>
+        <label for="output-unit">A</label>
+        <select id="output-unit" name="output-unit">
+          <option value="c">Celsius</option>
+          <option value="f" selected>Fahrenheit</option>
+          <option value="k">Kelvin</option>
+        </select>
+        <output name="output-temp" id="output-temp" for="input-temp input-unit output-unit">68 °F</output>
+        <button type="button" id="share-result" class="primary-action">
+          <span aria-hidden="true">↗</span>
+          Compartir resultado
+        </button>
+      </form>
+    </main>
+    <aside id="mini-widget" aria-label="Mini widget de temperatura">
+      <button id="mini-widget-close" type="button" aria-label="Ocultar mini widget">×</button>
+      <div class="mini-widget-icon" aria-hidden="true">🌡</div>
+      <div class="mini-widget-content">
+        <span>Temperatura</span>
+        <strong id="mini-widget-value">68 °F</strong>
+        <small id="mini-widget-detail">20 °C · Templada</small>
+      </div>
+    </aside>
+    <script src="./converter.js"></script>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js', { scope: './' });
+      }
+    </script>
+  </body>
+</html>
