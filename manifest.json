@@ -1,9 +1,9 @@
 {
-  "lang": "en-us",
-  "name": "Temperature converter",
-  "short_name": "Temperature converter",
+  "lang": "es-MX",
+  "name": "Conversor de temperatura",
+  "short_name": "Temperatura",
   "id": "./",
-  "description": "A basic temperature converter application that can convert to and from Celsius, Kelvin, and Fahrenheit",
+  "description": "Convierte temperaturas entre Celsius, Fahrenheit y Kelvin e incluye un widget para Windows 11.",
   "start_url": "./",
   "scope": "./",
   "background_color": "#2f3d58",
@@ -11,12 +11,44 @@
   "orientation": "any",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
+  "categories": ["utilities", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
+      {
+          "src": "./icon96.png",
+          "sizes": "96x96",
+          "type": "image/png",
+          "purpose": "any"
+      },
+      {
+          "src": "./icon128.png",
+          "sizes": "128x128",
+          "type": "image/png",
+          "purpose": "any"
+      },
+      {
+          "src": "./icon144.png",
+          "sizes": "144x144",
+          "type": "image/png",
+          "purpose": "any"
+      },
       {
           "src": "./icon192.png",
           "sizes": "192x192",
           "type": "image/png",
-          "purpose": "any maskable"
+          "purpose": "any"
+      },
+      {
+          "src": "./icon256.png",
+          "sizes": "256x256",
+          "type": "image/png",
+          "purpose": "any"
+      },
+      {
+          "src": "./icon384.png",
+          "sizes": "384x384",
+          "type": "image/png",
+          "purpose": "any"
       },
       {
           "src": "./icon512.png",
@@ -24,6 +56,22 @@
           "type": "image/png",
           "purpose": "any maskable"
       }
+  ],
+  "screenshots": [
+    {
+      "src": "./assets/store-preview.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Conversor de temperatura con termómetro en tiempo real"
+    },
+    {
+      "src": "./widgets/widget-preview.png",
+      "sizes": "300x304",
+      "type": "image/png",
+      "platform": "Windows",
+      "label": "Widget de conversión para Windows 11"
+    }
   ],
   "widgets": [
     {
@@ -47,9 +95,9 @@
       ],
       "screenshots": [
         {
-          "src": "./widgets/widget-preview.svg",
+          "src": "./widgets/widget-preview.png",
           "sizes": "300x304",
-          "type": "image/svg+xml",
+          "type": "image/png",
           "platform": "Windows",
           "label": "Vista previa del conversor de temperatura"
         }

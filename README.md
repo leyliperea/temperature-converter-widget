@@ -21,6 +21,13 @@ Para instalarlo en el panel de Widgets:
 Para realizar pruebas locales también se requiere tener habilitado el modo para
 desarrolladores de Windows y el entorno de ejecución de Windows App SDK.
 
+## Microsoft Store y PWABuilder
+
+La PWA incluye iconos PNG de 96 a 512 píxeles, captura promocional de 1280 × 720,
+captura del widget de 300 × 304 y metadatos de Store. La dirección permanente es:
+
+`https://leyliperea.github.io/temperature-converter-widget/`
+
 For instructions, see [Temperature convertor sample](https://learn.microsoft.com/microsoft-edge/progressive-web-apps/samples/temperature-converter).
 
 

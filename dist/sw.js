@@ -1,4 +1,4 @@
-const CACHE_NAME = `temperature-converter-v12`;
+const CACHE_NAME = `temperature-converter-v13`;
 const WIDGET_TAG = 'temperature-converter-widget';
 const WIDGET_TEMPLATE_URL = './widgets/temperature-template.json';
 const WIDGET_DATA_URL = './widgets/temperature-data.json';
@@ -11,12 +11,19 @@ self.addEventListener('install', event => {
       './',
       './converter.js',
       './converter.css',
+      './icon96.png',
+      './icon128.png',
+      './icon144.png',
       './icon192.png',
+      './icon256.png',
+      './icon384.png',
       './icon512.png',
       './manifest.json',
+      './assets/store-preview.png',
       './widgets/temperature-template.json',
       './widgets/temperature-data.json',
-      './widgets/widget-preview.svg'
+      './widgets/widget-preview.svg',
+      './widgets/widget-preview.png'
     ]);
   })());
   self.skipWaiting();
